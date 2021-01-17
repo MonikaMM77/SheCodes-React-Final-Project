@@ -21,7 +21,7 @@ export default function Weather(props) {
 		});
 	}
 
-	function search() {
+	function search(city) {
 		const apiKey = "30d51b8f5d573674a85c2b8f5f80916d";
 		let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 		axios.get(apiUrl).then(handleResponse);
@@ -52,7 +52,7 @@ export default function Weather(props) {
 			<WeatherForecast city={weatherData.city}/>
 		</div>
 	} else {
-		search();
+		search(props.defaultCity);
 		return(`Loading weather for ${props.defaultCity}...`);
 	}	
 } 
